@@ -10,6 +10,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             catchError(error => {
                 if (error instanceof HttpErrorResponse) {
 
+                    // Looking for a specific error, in this case it is the unauthorized status code
                     if (error.status === 401) {
                         return throwError(error.statusText);
                     }
